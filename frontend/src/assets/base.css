@@ -1,0 +1,24 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  background: #2c3e50;
+  /* background-image: url("./background.png"), linear-gradient(45deg, #2c3e50, #214348); */
+  background-image: url("./background.png"), linear-gradient(45deg, #302838, #3c3f54);
+  background-repeat: repeat, no-repeat;
+  background-size: 5em, cover;
+  color: #fff;
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: "Spectral", serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
