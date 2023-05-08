@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 
 import leMat from '@/assets/cards/00_le_mat.jpg'
 import leBateleur from '@/assets/cards/01_le_bateleur.jpg'
@@ -54,26 +54,34 @@ const props = defineProps({
 })
 
 const wheelDiv = ref(null)
+const wheelCenter = ref([0, 0])
 const wheelRadius = ref(0)
 
 const emit = defineEmits(['toggle-card-chosen'])
 
 function recomputeWheelRadius() {
-  wheelRadius.value = wheelDiv.value.clientWidth / 2
+  wheelCenter.value = [wheelDiv.value.clientWidth / 2, wheelDiv.value.clientHeight / 2]
+  wheelRadius.value = Math.min(wheelDiv.value.clientWidth, wheelDiv.value.clientHeight) * 0.4
 }
 
-onMounted(function () {
+onMounted(async function () {
+  await nextTick()
   recomputeWheelRadius()
-  window.onresize = recomputeWheelRadius
+  window.addEventListener('resize', recomputeWheelRadius)
+  window.addEventListener('orientationchange', recomputeWheelRadius)
 })
 
 function cardContainerStyle(index) {
-  const radius = wheelRadius.value
   const angle = index * (360 / cards.value.length) - 90
   const radians = angle * (Math.PI / 180)
-  const x = radius + Math.round(Math.cos(radians) * radius * 0.8)
-  const y = radius + Math.round(Math.sin(radians) * radius * 0.8)
+  const cardWidth = wheelRadius.value * 0.25
+  const x = wheelCenter.value[0] + Math.round(Math.cos(radians) * wheelRadius.value)
+  const y = wheelCenter.value[1] + Math.round(Math.sin(radians) * wheelRadius.value)
   return {
+    position: 'absolute',
+    top: '0',
+    left: `${-cardWidth / 2}px`,
+    width: `${cardWidth}px`,
     transform: `translate(${x}px, ${y}px) rotate(${90 + angle}deg)`
   }
 }
@@ -104,17 +112,12 @@ function toggleChosen(index) {
 
 <style scoped>
 .card-wheel {
-  aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
-
 .card-container {
-  position: absolute;
-  top: 0%;
-  left: -5%;
-  width: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,12 +184,13 @@ function toggleChosen(index) {
 }
 
 .card-wheel-content {
-  width: 100%;
-  text-align: center;
+  width: 40%;
+  height: 40%;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30%;
+  text-align: center;
 }
 </style>

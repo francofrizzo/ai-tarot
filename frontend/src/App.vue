@@ -156,48 +156,46 @@ async function getInterpretation() {
 <template>
   <main class="app-content">
     <div class="wheel-column">
-      <div class="wheel-container">
-        <CardWheel :chosen-cards="chosenCards" @toggle-card-chosen="toggleCardChosen($event)">
-          <div class="topics">
-            <div class="topic-line" v-for="line in topicLines" :key="line">
-              <img
-                v-for="topic in line"
-                :key="topic"
-                :src="topics[topic].img"
-                class="topic"
-                :class="{ selected: selectedTopic === topic }"
-                :alt="topics[topic].name"
-                @click="selectedTopic = topic"
-              />
-            </div>
-          </div>
-          <div v-if="selectedTopic === 'question'" class="question-container">
-            <p
-              contenteditable
-              class="question-input"
-              @focus="questionInputFocused = true"
-              @blur="
-                ($event) => {
-                  questionInputFocused = false
-                  question = $event.target.innerText
-                }
-              "
-              v-text="question"
+      <CardWheel :chosen-cards="chosenCards" @toggle-card-chosen="toggleCardChosen($event)">
+        <div class="topics">
+          <div class="topic-line" v-for="line in topicLines" :key="line">
+            <img
+              v-for="topic in line"
+              :key="topic"
+              :src="topics[topic].img"
+              class="topic"
+              :class="{ selected: selectedTopic === topic }"
+              :alt="topics[topic].name"
+              @click="selectedTopic = topic"
             />
-            <div class="question-placeholder" v-if="!question && !questionInputFocused">
-              Escribe tu pregunta aquí...
-            </div>
           </div>
-          <p class="selected-topic" v-else>
-            {{ topics[selectedTopic].name }}
-          </p>
-          <GetInterpretationButton
-            @click="getInterpretation"
-            :disabled="chosenCards.length === 0"
-            :waiting="gettingInterpretation"
+        </div>
+        <div v-if="selectedTopic === 'question'" class="question-container">
+          <p
+            contenteditable
+            class="question-input"
+            @focus="questionInputFocused = true"
+            @blur="
+              ($event) => {
+                questionInputFocused = false
+                question = $event.target.innerText
+              }
+            "
+            v-text="question"
           />
-        </CardWheel>
-      </div>
+          <div class="question-placeholder" v-if="!question && !questionInputFocused">
+            Escribe tu pregunta aquí...
+          </div>
+        </div>
+        <p class="selected-topic" v-else>
+          {{ topics[selectedTopic].name }}
+        </p>
+        <GetInterpretationButton
+          @click="getInterpretation"
+          :disabled="chosenCards.length === 0"
+          :waiting="gettingInterpretation"
+        />
+      </CardWheel>
 
       <PersonalitySelector
         :personalities="personalities"
@@ -220,9 +218,6 @@ async function getInterpretation() {
 </template>
 
 <style scoped>
-.app-content * {
-  outline: transparent solid 1px;
-}
 .app-content {
   max-width: 1400px;
   margin: 0 auto;
@@ -231,9 +226,8 @@ async function getInterpretation() {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: calc(var(--vh) * 100);
 }
-
 .wheel-column {
   flex: 0 1 60%;
   height: 100%;
@@ -244,17 +238,8 @@ async function getInterpretation() {
   padding: 2rem;
 }
 
-.wheel-container {
-  width: 100%;
-
-  max-height: 100%;
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .card-wheel {
+  width: 100%;
   height: 100%;
 }
 
@@ -316,7 +301,7 @@ async function getInterpretation() {
 .selected-topic {
   font-size: 1.2em;
   text-align: center;
-  margin-bottom: 1.8em;
+  margin-bottom: 1.5em;
   color: white;
 }
 
@@ -330,7 +315,7 @@ async function getInterpretation() {
   width: 100%;
   text-align: center;
   margin-top: -0.5em;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
   border-radius: 8px;
   transition: background-color 0.2s ease;
   padding: 0.5em 0.75em;
@@ -364,7 +349,7 @@ async function getInterpretation() {
   padding: 1em;
   cursor: pointer;
   opacity: 0.8;
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .random-card:hover {
@@ -388,7 +373,7 @@ async function getInterpretation() {
     flex-direction: column;
     justify-content: flex-start;
     height: auto;
-    min-height: 100vh;
+    min-height: calc(var(--vh) * 100);
   }
 
   .wheel-column {
@@ -424,8 +409,24 @@ async function getInterpretation() {
 }
 
 @media (max-width: 520px) {
+  .wheel-column {
+    padding: 0.5rem;
+  }
+
   .card-wheel {
     font-size: 0.7rem;
+  }
+
+  .personality-selector,
+  .random-card {
+    padding: 0.5em;
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 420px) {
+  .card-wheel {
+    font-size: 0.6rem;
   }
 }
 </style>

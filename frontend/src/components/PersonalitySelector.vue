@@ -37,7 +37,7 @@ const props = defineProps({
   align-items: center;
   cursor: pointer;
   opacity: 0.9;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease;
   user-select: none;
 }
 
@@ -49,7 +49,7 @@ const props = defineProps({
   width: 1.5em;
   height: 1.5em;
   margin: 0 0.5em 0.1em 0;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease;
 }
 
 .current-personality:hover img {
