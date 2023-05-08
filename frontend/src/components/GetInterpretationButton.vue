@@ -1,5 +1,5 @@
 <script setup>
-import InfinityLoader from './InfinityLoader.vue'
+import InfinityLoader from '@/components/InfinityLoader.vue'
 
 const props = defineProps({
   waiting: {
@@ -34,27 +34,31 @@ const emit = defineEmits(['click'])
 <style scoped>
 .container {
   height: 60px;
+  display: flex;
+  align-items: center;
 }
 
 button {
-  padding: 0.6rem 1.4rem;
+  padding: 0.4em 1em;
   border-radius: 10px;
   border: none;
-  background-color: rgba(255, 255, 255, 0.8);
-  transition: background-color 0.2s ease-in-out;
+  background: linear-gradient(0deg, rgb(238, 117, 89), rgb(249, 140, 116));
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  color: #0f101f;
   cursor: pointer;
   font-family: 'Spectral', serif;
   font-variant: small-caps;
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 
 button:not(:disabled):hover {
-  background-color: rgba(255, 255, 255, 1);
+  background: linear-gradient(0deg, rgb(248, 142, 118), rgb(250, 165, 146));
+  box-shadow: 0 5px 15px rgba(238, 117, 89, 0.4);
 }
 
 button:disabled {
-  background-color: rgba(255, 255, 255, 0.5);
-  color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(0deg, rgba(170, 154, 149, 0.6), rgba(234, 210, 204, 0.5));
+  color: rgba(15, 16, 31, 0.7);
 }
 
 .fade-enter-active,

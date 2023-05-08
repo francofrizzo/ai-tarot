@@ -1,11 +1,17 @@
-from http.server import HTTPServer
-from urllib import parse
+from dotenv import load_dotenv
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 import json
+import os
+from urllib import parse
 
 from tarot import get_interpretation
 
-from http.server import HTTPServer, SimpleHTTPRequestHandler
-import sys
+load_dotenv()
+
+config = {
+    "host": os.getenv("HOST", "0.0.0.0"),
+    "port": int(os.getenv("PORT", "3678")),
+}
 
 class CORSRequestHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
@@ -45,9 +51,6 @@ class CORSRequestHandler(SimpleHTTPRequestHandler):
             "response": response
         }).encode("utf-8"))
 
-host = sys.argv[1] if len(sys.argv) > 2 else '0.0.0.0'
-port = int(sys.argv[len(sys.argv)-1]) if len(sys.argv) > 1 else 3000
-
-print("Listening on {}:{}".format(host, port))
-httpd = HTTPServer((host, port), CORSRequestHandler)
+print("Listening on {}:{}".format(config["host"], config["port"]))
+httpd = HTTPServer((config["host"], config["port"]), CORSRequestHandler)
 httpd.serve_forever()

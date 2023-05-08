@@ -1,9 +1,18 @@
+from dotenv import load_dotenv
 import openai
+import os
 
-openai_api_key = ""
-chatgpt_model = "gpt-3.5-turbo"
+load_dotenv()
 
-openai.api_key = openai_api_key
+config = {
+    "openai_api_key": os.getenv("OPENAI_API_KEY"),
+    "chatgpt_model": os.getenv("CHATGPT_MODEL", "gpt-3.5-turbo")
+}
+
+if not config["openai_api_key"]:
+    raise Exception("Missing OPENAI_API_KEY environment variable")
+
+openai.api_key = config["openai_api_key"]
 
 card_options = [
     "del Loco",
@@ -14,10 +23,10 @@ card_options = [
     "del Papa",
     "de los Enamorados",
     "del Carro",
-    "La Justicia",
+    "de la Justicia",
     "del Ermitaño",
-    "La Rueda de la Fortuna",
-    "La Fuerza",
+    "de la Rueda de la Fortuna",
+    "de la Fuerza",
     "del Colgado",
     "del Arcano sin Nombre",
     "de la Templanza",
@@ -95,7 +104,7 @@ personality_options = {
 def get_gpt4_response(personality_keywords, prompt):
     chatgpt_system = f"You are a tarotist. Be true to the the traditional meanings of the cards. Give relatively concise, gender-neutral answers. Be {', '.join(map(lambda x: x, personality_keywords[:-1])) } and {personality_keywords[-1]}."
     response = openai.ChatCompletion.create(
-        model=chatgpt_model,
+        model=config["chatgpt_model"],
         messages=[
             {"role": "system", "content": chatgpt_system},
             {"role": "user", "content": prompt}

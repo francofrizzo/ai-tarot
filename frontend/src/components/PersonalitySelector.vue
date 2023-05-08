@@ -1,12 +1,3 @@
-<template>
-  <div @click="rotatePersonality">
-    <div class="current-personality">
-      <img src="../assets/settings.png" class="settings" alt="settings" />
-      {{ personalities[selectedPersonality] }}
-    </div>
-  </div>
-</template>
-
 <script setup>
 const emit = defineEmits(['update:selectedPersonality'])
 
@@ -30,6 +21,15 @@ const props = defineProps({
 })
 </script>
 
+<template>
+  <div @click="rotatePersonality">
+    <div class="current-personality">
+      <img src="@/assets/icons/settings.png" class="settings" alt="settings" />
+      {{ personalities[selectedPersonality] }}
+    </div>
+  </div>
+</template>
+
 <style scoped>
 .current-personality {
   font-size: 0.9em;
@@ -38,6 +38,7 @@ const props = defineProps({
   cursor: pointer;
   opacity: 0.9;
   transition: opacity 0.2s ease-in-out;
+  user-select: none;
 }
 
 .current-personality:hover {
@@ -48,5 +49,10 @@ const props = defineProps({
   width: 1.5em;
   height: 1.5em;
   margin: 0 0.5em 0.1em 0;
+  transition: transform 0.2s ease-in-out;
+}
+
+.current-personality:hover img {
+  transform: rotate(45deg) scale(1.15);
 }
 </style>

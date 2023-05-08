@@ -1,29 +1,52 @@
 <script setup>
-import { onMounted, ref, defineProps } from 'vue'
+import { onMounted, ref } from 'vue'
+
+import leMat from '@/assets/cards/00_le_mat.jpg'
+import leBateleur from '@/assets/cards/01_le_bateleur.jpg'
+import laPapesse from '@/assets/cards/02_la_papesse.jpg'
+import lImperatrise from '@/assets/cards/03_limperatrise.jpg'
+import lEmpereur from '@/assets/cards/04_lempereur.jpg'
+import lePape from '@/assets/cards/05_le_pape.jpg'
+import lAmoureux from '@/assets/cards/06_lamoureux.jpg'
+import leCharior from '@/assets/cards/07_le_charior.jpg'
+import justice from '@/assets/cards/08_justice.jpg'
+import lErmite from '@/assets/cards/09_lermite.jpg'
+import laRoueDeFortune from '@/assets/cards/10_la_roue_de_fortune.jpg'
+import laForce from '@/assets/cards/11_la_force.jpg'
+import lePendu from '@/assets/cards/12_le_pendu.jpg'
+import leArcaneSansNom from '@/assets/cards/13.jpg'
+import tenperance from '@/assets/cards/14_tenperance.jpg'
+import leDiable from '@/assets/cards/15_le_diable.jpg'
+import laMaisonDieu from '@/assets/cards/16_la_maison_dieu.jpg'
+import lEstoille from '@/assets/cards/17_lestoille.jpg'
+import laLune from '@/assets/cards/18_la_lune.jpg'
+import leSoleil from '@/assets/cards/19_le_soleil.jpg'
+import leJugement from '@/assets/cards/20_le_jugement.jpg'
+import leMonde from '@/assets/cards/21_le_monde.jpg'
 
 const cards = ref([
-  { img: '00_le_mat', name: 'El Loco' },
-  { img: '01_le_bateleur', name: 'El Mago' },
-  { img: '02_la_papesse', name: 'La Papisa' },
-  { img: '03_limperatrise', name: 'La Emperatriz' },
-  { img: '04_lempereur', name: 'El Emperador' },
-  { img: '05_le_pape', name: 'El Papa' },
-  { img: '06_lamoureux', name: 'Los Enamorados' },
-  { img: '07_le_charior', name: 'El Carro' },
-  { img: '08_justice', name: 'La Justicia' },
-  { img: '09_lermite', name: 'El Emitaño' },
-  { img: '10_la_roue_de_fortune', name: 'La Rueda de la Fortuna' },
-  { img: '11_la_force', name: 'La Fuerza' },
-  { img: '12_le_pendu', name: 'El Colgado' },
-  { img: '13', name: 'El Arcano sin Nombre' },
-  { img: '14_tenperance', name: 'La Templanza' },
-  { img: '15_le_diable', name: 'El Diablo' },
-  { img: '16_la_maison_dieu', name: 'La Torre' },
-  { img: '17_lestoille', name: 'La Estrella' },
-  { img: '18_la_lune', name: 'La Luna' },
-  { img: '19_le_soleil', name: 'El Sol' },
-  { img: '20_le_jugement', name: 'El Juicio' },
-  { img: '21_le_monde', name: 'El Mundo' }
+  { img: leMat, name: 'El Loco' },
+  { img: leBateleur, name: 'El Mago' },
+  { img: laPapesse, name: 'La Papisa' },
+  { img: lImperatrise, name: 'La Emperatriz' },
+  { img: lEmpereur, name: 'El Emperador' },
+  { img: lePape, name: 'El Papa' },
+  { img: lAmoureux, name: 'Los Enamorados' },
+  { img: leCharior, name: 'El Carro' },
+  { img: justice, name: 'La Justicia' },
+  { img: lErmite, name: 'El Emitaño' },
+  { img: laRoueDeFortune, name: 'La Rueda de la Fortuna' },
+  { img: laForce, name: 'La Fuerza' },
+  { img: lePendu, name: 'El Colgado' },
+  { img: leArcaneSansNom, name: 'El Arcano sin Nombre' },
+  { img: tenperance, name: 'La Templanza' },
+  { img: leDiable, name: 'El Diablo' },
+  { img: laMaisonDieu, name: 'La Torre' },
+  { img: lEstoille, name: 'La Estrella' },
+  { img: laLune, name: 'La Luna' },
+  { img: leSoleil, name: 'El Sol' },
+  { img: leJugement, name: 'El Juicio' },
+  { img: leMonde, name: 'El Mundo' }
 ])
 
 const props = defineProps({
@@ -46,10 +69,10 @@ onMounted(function () {
 
 function cardContainerStyle(index) {
   const radius = wheelRadius.value
-  const angle = (index - 1) * (360 / cards.value.length)
+  const angle = index * (360 / cards.value.length) - 90
   const radians = angle * (Math.PI / 180)
-  const x = radius + Math.round(Math.cos(radians) * radius * 0.7)
-  const y = radius + Math.round(Math.sin(radians) * radius * 0.7)
+  const x = radius + Math.round(Math.cos(radians) * radius * 0.8)
+  const y = radius + Math.round(Math.sin(radians) * radius * 0.8)
   return {
     transform: `translate(${x}px, ${y}px) rotate(${90 + angle}deg)`
   }
@@ -73,7 +96,7 @@ function toggleChosen(index) {
       :class="{ chosen: props.chosenCards.includes(index) }"
     >
       <div class="card" @click="toggleChosen(index)">
-        <img :src="`./src/assets/${card.img}.jpg`" class="card-img" :alt="card.name" />
+        <img :src="card.img" class="card-img" :alt="card.name" />
       </div>
     </div>
   </div>
@@ -81,10 +104,7 @@ function toggleChosen(index) {
 
 <style scoped>
 .card-wheel {
-  position: relative;
-  width: 100%;
   aspect-ratio: 1;
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,11 +120,11 @@ function toggleChosen(index) {
   align-items: center;
 }
 
-.card-container:nth-child(even) {
+.card-container:nth-child(odd) {
   z-index: 0;
 }
 
-.card-container:nth-child(odd) {
+.card-container:nth-child(even) {
   z-index: 1;
 }
 
@@ -112,11 +132,11 @@ function toggleChosen(index) {
   z-index: 2;
 }
 
-.card-wheel.some-chosen .card-container.chosen:nth-child(even) {
+.card-wheel.some-chosen .card-container.chosen:nth-child(odd) {
   z-index: 2;
 }
 
-.card-wheel.some-chosen .card-container.chosen:nth-child(odd) {
+.card-wheel.some-chosen .card-container.chosen:nth-child(even) {
   z-index: 3;
 }
 
@@ -142,12 +162,12 @@ function toggleChosen(index) {
 }
 
 .card-wheel.some-chosen .card {
-  opacity: 0.5;
-  filter: grayscale(100%);
+  /* opacity: 0.5; */
+  filter: grayscale(100%) brightness(60%) contrast(90%);
 }
 
 .card-wheel.some-chosen .card:hover {
-  opacity: 0.8;
+  filter: grayscale(100%) brightness(90%);
 }
 
 .card-wheel.some-chosen .card-container.chosen .card {

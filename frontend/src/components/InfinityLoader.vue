@@ -32,7 +32,7 @@ onMounted(() => {
 
   let shape = new THREE.TorusGeometry(70, 20, 60, 160)
   let material = new THREE.MeshPhongMaterial({
-    color: 0xe4ecfa,
+    color: 0xee7559,
     shininess: 20,
     opacity: 0.96,
     transparent: true

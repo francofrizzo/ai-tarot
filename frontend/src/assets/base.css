@@ -9,11 +9,10 @@
 
 body {
   min-height: 100vh;
-  background: #2c3e50;
-  /* background-image: url("./background.png"), linear-gradient(45deg, #2c3e50, #214348); */
-  background-image: url("./background.png"), linear-gradient(45deg, #302838, #3c3f54);
+  background: #0f101f;
+  background-image: url("./background.png"), linear-gradient(45deg, #0f101f, #334e56);
   background-repeat: repeat, no-repeat;
-  background-size: 5em, cover;
+  background-size: 100px, cover;
   color: #fff;
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
