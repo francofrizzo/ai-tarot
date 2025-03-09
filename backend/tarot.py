@@ -71,7 +71,7 @@ card_options = [
         "name_in_context": "de los Enamorados",
         "interpretation": [
             "Primer carta que involucra mas de un personaje. La fascinación del encuentro con otra persona. Y eso hace que traiga confusión.",
-            "La persona del medio está, con su cuerpo hacia el personaje de la derecha y con su cabeza al de la izquierda. Da indicio que no sabe qué dirección tomar. Si hacerle caso a su cabeza o a su instinto. Es por eso que aparece cupido. Para flecharlo y que se vuelva a "enamorar" de si mismo y aliñe su cabeza de su corazón.",
+            "La persona del medio está, con su cuerpo hacia el personaje de la derecha y con su cabeza al de la izquierda. Da indicio que no sabe qué dirección tomar. Si hacerle caso a su cabeza o a su instinto. Es por eso que aparece cupido. Para flecharlo y que se vuelva a \"enamorar\" de si mismo y aliñe su cabeza de su corazón.",
         ]
     },
     {
@@ -119,8 +119,8 @@ card_options = [
         "name": "El Colgado",
         "name_in_context": "del Colgado",
         "interpretation": [
-            "Te detenés a observar, hay algo que te hizo frenar. Algo te hizo ruido pero no le encontrás la vuelta. Ahí es cuando te das vuelta vos y mirás todo de otra manera. Es el famoso  momento "aha", en donde te das cuenta que las cosas que pensabas, que te habían dicho, te habían enseñado, etc; no son lo que pensabas. Es un nuevo pensar, un nuevo sentir.",
-            "Se cuelga cómodo y tranquilo. Lo sostienen dos pilares, que ven podrían ser arboles. Y de ahí "pende" de un cordón. Arbol de familia y cordón umbilical te suenan? Claro, esto puede estar relacionado a cortar con el legado familiar, o con nuestros padres. Pero esto tb aplica para muchas otros momentos adolescentes. Tradiciones, jefes, tiempos, ideas, etc; todos ellos pueden tb romperse, para así transformarse.",
+            "Te detenés a observar, hay algo que te hizo frenar. Algo te hizo ruido pero no le encontrás la vuelta. Ahí es cuando te das vuelta vos y mirás todo de otra manera. Es el famoso  momento \"aha\", en donde te das cuenta que las cosas que pensabas, que te habían dicho, te habían enseñado, etc; no son lo que pensabas. Es un nuevo pensar, un nuevo sentir.",
+            "Se cuelga cómodo y tranquilo. Lo sostienen dos pilares, que ven podrían ser arboles. Y de ahí \"pende\" de un cordón. Arbol de familia y cordón umbilical te suenan? Claro, esto puede estar relacionado a cortar con el legado familiar, o con nuestros padres. Pero esto tb aplica para muchas otros momentos adolescentes. Tradiciones, jefes, tiempos, ideas, etc; todos ellos pueden tb romperse, para así transformarse.",
         ],
 
     },
@@ -128,7 +128,7 @@ card_options = [
         "name": "El Arcano sin Nombre",
         "name_in_context": "del Arcano sin Nombre",
         "interpretation": [
-            "Es una muerte? Sí. Pero es una transformación y transmutación. Me gusta llamarle momento "Marie Kondo". Porque es tiempo de hacer limpieza, de todo tipo: vínculos, trabajos, cosas, acciones, transiciones, ideas, tiempos.",
+            "Es una muerte? Sí. Pero es una transformación y transmutación. Me gusta llamarle momento \"Marie Kondo\". Porque es tiempo de hacer limpieza, de todo tipo: vínculos, trabajos, cosas, acciones, transiciones, ideas, tiempos.",
             "Como ven esta imagen refleja un cuerpo esquelético. Primero se deshace de ru ropaje, hasta quedar en huesos. Pero luego continúa con su hoz arando la tierra, preparando el terreno para la nueva siembra.",
             "Qué debe transformarse en mi vida? Que quiero sembrar? De qué me debo deshacer?"
         ],
@@ -137,7 +137,7 @@ card_options = [
         "name": "La Templanza",
         "name_in_context": "de la Templanza",
         "interpretation": [
-            "Despues de una tormenta, llega la calma.La templanza se aparece en forma de ángel para alivianar la cosas, para equipararlas, para "templarlas"",
+            "Despues de una tormenta, llega la calma.La templanza se aparece en forma de ángel para alivianar la cosas, para equipararlas, para \"templarlas\"",
             "Esta es una señal, a modo de bendición."
         ]
     },
