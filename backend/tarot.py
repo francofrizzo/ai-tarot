@@ -6,7 +6,7 @@ load_dotenv()
 
 config = {
     "openai_api_key": os.getenv("OPENAI_API_KEY"),
-    "chatgpt_model": os.getenv("CHATGPT_MODEL", "gpt-3.5-turbo")
+    "chatgpt_model": os.getenv("CHATGPT_MODEL", "gpt-4o-mini")
 }
 
 if not config["openai_api_key"]:
